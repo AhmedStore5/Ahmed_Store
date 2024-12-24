@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="نحن متميزون بشحن جميع الالعاب الإلكترونية نحن الأمن علي الإطلاق وبإذن الله سوف نصبح الافضل">
+    <meta name="keywords" content="شحن الالعاب , ببجي , فري فاير">
+    <meta name="author" content="❖ 𓆩✦𓆪 𝑨𝑯𝑴𝑬𝑫 ⋆ 𝑺𝑻𝑶𝑹𝑬 𓆩✦𓆪  
+𓊈 مــتــجــر 𓊉">
+    <title>Ahmed Store</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- إضافة مكتبة FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+</head>
+
+<body class="fade-in">
+    <!-- زر القائمة الجانبية -->
+    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
+
+    <!-- القائمة الجانبية -->
+    <aside id="sidebar" class="sidebar">
+      <button class="close-btn" onclick="toggleSidebar()">✖</button>
+         <button id="toggle-mode" class="mode-toggle" onclick="toggleMode()">🌞</button>
+      <ul>
+        <br><br>
+        <li><a href="#home" onclick="href='index.html'">الرئيسية</a></li>
+        <li><a href="#products">المنتجات</a></li>
+        <li><a href="#about">حول المتجر</a></li>
+        <li><a href="#contact">اتصل بنا</a></li>
+        
+      </ul>
+</div>
+    </aside>
+    
+
+    <!-- شريط علوي يحتوي على حقل البحث وزر التبديل بين الوضعين -->
+    <div class="top-bar">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="ابحث عن منتج..." onkeyup="searchProducts()">
+        </div>
+    </div>
+
+    <header class="header">
+        <div class="banner-container">
+  <div class="banner-images">
+    <img src="https://c.top4top.io/p_3260jfmmn0.jpeg" alt="Image 1">
+    <img src="https://d.top4top.io/p_3260xh7y90.jpeg" alt="Image 2" onclick="buyProduct('pubg')">
+    <img src="https://e.top4top.io/p_32601my491.jpeg" alt="Image 3" onclick="buyProduct('freefire')">
+    <!-- أضف المزيد من الصور حسب الحاجة -->
+  </div>
+  <div class="banner-dots">
+    <div class="dot active" data-index="0"></div>
+    <div class="dot" data-index="1"></div>
+    <div class="dot" data-index="2"></div>
+    <!-- أضف المزيد حسب عدد الصور -->
+  </div>
+</div>
+
+        </div>
+        <img src="https://g.top4top.io/p_3245mrwj23.jpg" alt="Store Logo" class="store-logo">
+        <div class="store-info">
+            <div class="store-name">Ahmed Store متجر</div>
+        </div>
+    </header>
+    
+    <!-- قائمة المنتجات -->
+    <section class="products">
+        <div class="product-card">
+            <img src="https://h.top4top.io/p_3245qbdpx3.jpeg" alt="PUBG Mobile">
+            <h2>ببجي موبايل</h2>
+            <button title="buy now" onclick="buyProduct('pubg')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://d.top4top.io/p_3245hljsn0.jpeg" alt="Free Fire">
+            <h2>فري فاير</h2>
+            <button onclick="buyProduct('freefire')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://l.top4top.io/p_32454nex88.jpeg" alt="Call of Duty">
+            <h2>كول اوف ديوتي</h2>
+            <button onclick="buyProduct('callofduty')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://e.top4top.io/p_3245jlu1w1.png" alt="Google Play Card">
+            <h2>بطاقات جوجل بلاي</h2>
+            <button onclick="buyProduct('googleplay')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://g.top4top.io/p_32451rgla3.jpeg" alt="Steam Card">
+            <h2>بطاقات ستيم</h2>
+            <button onclick="buyProduct('steam')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://j.top4top.io/p_3245yba9a6.jpeg" alt="Minecraft">
+            <h2>ماين كرافت</h2>
+            <button onclick="buyProduct('minecraft')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://i.top4top.io/p_3245yccn05.jpeg" alt="Amazon Card">
+            <h2>بطاقات امازون</h2>
+            <button onclick="buyProduct('amazon')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://f.top4top.io/p_3245zift12.jpeg" alt="Apple Card">
+            <h2>بطاقات ابل</h2>
+            <button onclick="buyProduct('apple')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://k.top4top.io/p_3245hh15k7.jpeg" alt="Yalla Ludo">
+            <h2>يلا لودو</h2>
+            <button onclick="buyProduct('yallaludo')">شراء</button>
+        </div>
+        <div class="product-card">
+            <img src="https://h.top4top.io/p_3245hqlu84.jpeg" alt="Mobile Legends">
+            <h2>موديل ليجيندس</h2>
+            <button onclick="buyProduct('mobilelegends')">شراء</button>
+        </div>
+    </section>
+
+    <!-- زر العودة للأعلى -->
+    <button id="back-to-top">🔝</button>
+    
+    
+    <script>
+        // دالة لتمرير اسم اللعبة إلى صفحة اختيار المنتجات
+        function buyProduct(game) {
+            // تغيير الرابط لصفحة المنتجات مع إضافة اسم اللعبة
+            window.location.href = `products.html?game=${game}`;
+        }
+      
+    </script>
+
+    <script src="script.js"></script>
+</body>
+</html>
