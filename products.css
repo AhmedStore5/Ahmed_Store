@@ -1,0 +1,209 @@
+:root {
+  --primary-color: #009688;
+  --secondary-color: #004d40;
+  --accent-color: #ff5722;
+  --light-background: #f9f9f9;
+  --dark-background: #212121;
+  --highlight-color: #00bfae;
+  --text-color: #333;
+  --modal-bg: rgba(0, 0, 0, 0.7);
+  --button-hover-color: #00897b;
+}
+
+body {
+  font-family: 'Cairo', sans-serif;
+  margin: 0;
+  padding: 0;
+  background: var(--light-background);
+  color: var(--text-color);
+}
+
+header {
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  text-align: center;
+  padding: 20px 15px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+header h1 {
+  margin: 0;
+  font-size: 3rem;
+}
+
+header p {
+  margin-top: 10px;
+  font-size: 1.2rem;
+}
+
+.products {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.product {
+  background: white;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  padding: 20px;
+  width: 280px;
+  transition: transform 0.3s, box-shadow 0.3s ease-in-out;
+}
+
+.product:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  background-color: var(--highlight-color);
+}
+
+.product h3 {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+}
+
+.product p {
+  font-size: 1.1rem;
+  margin: 15px 0;
+}
+
+.product select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.product button {
+  background: var(--accent-color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.2s;
+  width: 100%;
+}
+
+.product button:hover {
+  background: var(--primary-color);
+  transform: scale(1.05);
+}
+
+/* نافذة الدفع */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--modal-bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.modal:not(.hidden) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-content {
+  background: var(--light-background);
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  width: 90%;
+  max-width: 450px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.modal-content h2 {
+  margin-bottom: 15px;
+  color: var(--primary-color);
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.payment-methods {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.payment-methods button {
+  background: var(--secondary-color);
+  color: white;
+  padding: 12px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.payment-methods button:hover {
+  background: var(--highlight-color);
+  transform: scale(1.05);
+}
+
+/* الأقسام الخاصة بكل طريقة دفع */
+.payment-section {
+  display: none; /* إخفاء الأقسام بشكل افتراضي */
+  margin-top: 20px;
+  padding: 20px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.payment-section.active {
+  display: block; /* إظهار القسم النشط فقط */
+}
+
+.payment-section h3 {
+  font-size: 1.8rem;
+  color: var(--primary-color);
+  margin-bottom: 15px;
+}
+
+.payment-section p {
+  font-size: 1.1rem;
+  margin: 15px 0;
+}
+
+.payment-section button {
+  background: var(--accent-color);
+  color: white;
+  padding: 12px 20px;
+  margin-top: 20px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  width: 100%;
+  transition: background 0.3s ease, transform 0.2s;
+}
+
+.payment-section button:hover {
+  background: var(--primary-color);
+  transform: scale(1.05);
+}
+
+.extra-buttons {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}

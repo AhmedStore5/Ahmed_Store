@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>منتجات اللعبة</title>
+  <link rel="stylesheet" href="products.css">
+</head>
+<body>
+  <header class="header">
+    <h1 id="game-title">منتجات اللعبة</h1>
+    <p>اختر الكمية التي تناسبك من المنتجات ثم تابع للدفع</p>
+  </header>
+
+  <main class="main">
+    <section id="products-container" class="products">
+      <!-- المنتجات يتم تحميلها ديناميكيًا -->
+    </section>
+  </main>
+
+  <!-- نافذة الدفع -->
+  <div id="payment-modal" class="modal hidden">
+    <div class="modal-content">
+      <button class="close-modal" onclick="closeModal()">❌</button>
+      <h2>إتمام الدفع</h2>
+      <p id="selected-product"></p>
+      <p id="total-price"></p>
+
+      <!-- اختيار طريقة الدفع -->
+      <div class="payment-methods">
+        <button onclick="selectPaymentMethod('vodafone')">فودافون كاش</button>
+        <button onclick="selectPaymentMethod('paypal')">PayPal</button>
+        <button onclick="selectPaymentMethod('instapay')">Instapay</button>
+      </div>
+
+      <!-- أقسام الدفع -->
+      <div id="vodafone-section" class="payment-section">
+        <h3>فودافون كاش</h3>
+        <p>
+          رقم: 01060453016
+          <button onclick="copyToClipboard('01060453016')">نسخ 📋</button>
+        </p>
+        <p>قم بإرسال المبلغ إلى الرقم الموضح أعلاه.</p>
+        <div class="extra-buttons">
+          <button onclick="confirmPayment('فودافون كاش')">تأكيد الدفع</button>
+          <button onclick="closeModal()">إلغاء</button>
+        </div>
+      </div>
+
+      <div id="paypal-section" class="payment-section">
+        <h3>PayPal</h3>
+        <p>قم بالدفع باستخدام بريدك الإلكتروني المسجل في PayPal.</p>
+        <div class="extra-buttons">
+          <button onclick="confirmPayment('PayPal')">تأكيد الدفع</button>
+          <button onclick="closeModal()">إلغاء</button>
+        </div>
+      </div>
+
+      <div id="instapay-section" class="payment-section">
+        <h3>Instapay</h3>
+        <p>
+          اسم المستخدم: ahmedstore
+          <button onclick="copyToClipboard('ahmedstore')">نسخ 📋</button>
+        </p>
+        <div class="extra-buttons">
+          <button onclick="confirmPayment('Instapay')">تأكيد الدفع</button>
+          <button onclick="closeModal()">إلغاء</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+    <script src="products.js"></script>
+</body>
+</html>
