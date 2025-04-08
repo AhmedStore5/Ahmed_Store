@@ -1,822 +1,842 @@
-/* Reset and basic styling */
-@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+/* === style.css === */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Roboto', sans-serif;
-}
-
-body {
-    background: var(--bg-color, linear-gradient(135deg, #1a1a2e, #16213e));
-    color: var(--text-color, #fff);
-    text-align: center;
-    transition: all 0.3s ease;
-    padding-top: 70px;
-    overflow-x: hidden;
-}
-
-/* Animation for body fade-in */
-.fade-in {
-    animation: fadeIn 1.5s ease-in-out;
-}
-
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-
-/* Light Mode */
-body.light-mode {
-    --bg-color: linear-gradient(135deg, #ffffff, #f1f1f1);
-    --text-color: #333;
-    --card-bg: linear-gradient(145deg, #ffffff, #e6e6e6);
-    --card-shadow: rgba(0, 0, 0, 0.2);
-    --button-bg: #33b5ff;
-    --button-hover-bg: #0099cc;
-    --search-bg: rgba(0, 0, 0, 0.1);
-    --search-border: #66d9ff;
-    --search-focus-border: #0099cc;
-    --logo-border: #0099cc;
-    --top-bar-bg: rgba(255, 255, 255, 0.8);
-    --top-bar-shadow: rgba(0, 0, 0, 0.1);
-    --search-input:  rgba (0, 0, 0, 0.1)
-}
+/* --- Global Styles & Variables --- */
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800&display=swap');
 
 :root {
-    /* Dark Mode Variables */
-    --sidebar-bg-dark: linear-gradient(135deg, #333, #444, #555);
-    --sidebar-text-dark: #fff;
-    --sidebar-border-dark: 5px solid rgba(51, 181, 255, 0.5);
-    --sidebar-shadow-dark: -2px 0 15px rgba(0, 0, 0, 0.6);
-    --sidebar-glow-dark: rgba(51, 181, 255, 0.5);
-    --sidebar-glow-dark-active: rgba(51, 181, 255, 0.8);
-
-    /* Light Mode Variables */
-    --sidebar-bg-light: linear-gradient(135deg, #ffffff, #e6f7ff, #cceeff);
-    --sidebar-text-light: #333;
-    --sidebar-border-light: 3px solid #0099cc;
-    --sidebar-shadow-light: 0 4px 15px rgba(0, 0, 0, 0.2);
-    --sidebar-glow-light: rgba(0, 153, 204, 0.3);
-    --sidebar-glow-light-active: rgba(0, 153, 204, 0.6);
-
-    /* Default Text Colors */
-    --text-color-dark: #fff;
-    --text-color-light: #333;
+    --font-family: 'Cairo', sans-serif;
+    --primary-bg: #f8f9fa; /* Light Gray */
+    --form-bg: #ffffff;
+    --border-color: #dee2e6;
+    --input-border-color: #ced4da;
+    --primary-text: #343a40; /* Darker Gray */
+    --secondary-text: #6c757d; /* Medium Gray */
+    --accent-color: #6f42c1; /* Bootstrap Purple */
+    --accent-hover: #5a349b;
+    --success-color: #198754; /* Bootstrap Green */
+    --success-hover: #146c43;
+    --danger-color: #dc3545; /* Bootstrap Red */
+    --danger-hover: #b02a37;
+    --price-color: var(--success-color);
+    --border-radius: 0.4rem; /* Slightly more rounded */
+    --box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.1); /* Softer shadow */
+    --box-shadow-inset: inset 0 1px 2px rgba(0, 0, 0, 0.075);
+    --input-bg: #ffffff;
+    --input-focus-border: var(--accent-color);
+    --input-focus-shadow: rgba(111, 66, 193, 0.25);
+    --readonly-bg: #e9ecef;
+    --vodafone-color: #e60000;
+    --orange-color: #FF7F00;
+    --instapay-color: #00a0e3; /* Common Instapay blue */
+    --telegram-color: #0088cc;
+    --whatsapp-color: #25d366;
+    --transition-speed: 0.2s;
 }
 
-body.dark-mode {
-    --sidebar-bg: var(--sidebar-bg-dark);
-    --sidebar-text: var(--sidebar-text-dark);
-    --sidebar-border: var(--sidebar-border-dark);
-    --sidebar-shadow: var(--sidebar-shadow-dark);
-    --sidebar-glow: var(--sidebar-glow-dark);
-    --sidebar-glow-active: var(--sidebar-glow-dark-active);
-    --text-color: var(--text-color-dark);
-}
-
-body.light-mode {
-    --sidebar-bg: var(--sidebar-bg-light);
-    --sidebar-text: var(--sidebar-text-light);
-    --sidebar-border: var(--sidebar-border-light);
-    --sidebar-shadow: var(--sidebar-shadow-light);
-    --sidebar-glow: var(--sidebar-glow-light);
-    --sidebar-glow-active: var(--sidebar-glow-light-active);
-    --text-color: var(--text-color-light);
-}
-
-/* Sidebar */
-.sidebar {
-    position: fixed;
-    top: 70px;
-    right: -300px;
-    width: 300px;
-    height: 100%;
-    background: var(--sidebar-bg);
-    color: var(--sidebar-text);
-    padding: 20px;
-    box-shadow: var(--sidebar-shadow);
-    border-left: var(--sidebar-border);
-    transition: right 0.8s cubic-bezier(0.25, 1, 0.5, 1), box-shadow 0.5s ease, background 1.5s ease-in-out;
-    z-index: 1100;
-    opacity: 0.9;
-    animation: sideBarMove 0.5s ease-out;
-}
-
-@keyframes sideBarMove {
-    0% {
-        transform: translateX(-20px);
-        opacity: 0;
-    }
-    100% {
-        transform: translateX(0);
-        opacity: 1;
-    }
-}
-
-.sidebar.visible {
-    right: 0;
-    transform: translateY(0);
-    opacity: 1;
-    background: linear-gradient(135deg, #16213e, #0099cc, #33b5ff);
-    animation: glowPulse 2s infinite ease-in-out;
-}
-
-@keyframes glowPulse {
-    0% {
-        box-shadow: 0 0 20px rgba(51, 181, 255, 0.5);
-    }
-    50% {
-        box-shadow: 0 0 40px rgba(51, 181, 255, 0.8);
-    }
-    100% {
-        box-shadow: 0 0 20px rgba(51, 181, 255, 0.5);
-    }
-}
-
-.sidebar ul {
-    list-style-type: none;
-    padding: 0;
-    animation: slowFadeIn 2s ease-in-out;
-}
-
-@keyframes slowFadeIn {
-    0% {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.sidebar ul li {
-    margin: 30px 0;
-    position: relative;
-    padding-left: 40px;
-    animation: slideIn 1s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-@keyframes slideIn {
-    0% {
-        opacity: 0;
-        transform: translateX(-30px);
-    }
-    100% {
-        opacity: 1;
-        transform: translateX(0);
-    }
-}
-
-.sidebar ul li:nth-child(3n) {
-    transform: scale(1.1);
-    animation: bounce 2s infinite ease-in-out;
-}
-
-@keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
-}
-
-.sidebar ul li a {
-    color: var(--sidebar-text);
-    text-decoration: none;
-    font-size: 1.4em;
-    font-weight: bold;
-    transition: color 0.4s ease, transform 0.3s ease, text-shadow 0.4s ease;
-    text-shadow: 0 0 5px rgba(51, 181, 255, 0.5), 0 0 10px rgba(0, 153, 204, 0.5);
-}
-
-.sidebar ul li a:hover {
-    color: #ff6347;
-    transform: rotate(10deg) scale(1.2);
-    text-shadow: 0 0 20px rgba(255, 87, 34, 0.7), 0 0 30px rgba(255, 87, 34, 0.8);
-}
-
-.sidebar ul li a::after {
-    content: "\f111";
-    font-family: "Font Awesome 5 Free";
-    font-weight: 900;
-    position: absolute;
-    right: -30px;
-    color: #33b5ff;
-    font-size: 1.2em;
-    animation: rotateIcon 3s linear infinite;
-}
-
-@keyframes rotateIcon {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
-    }
-}
-
-/* Background Interaction */
+/* --- Base & Reset --- */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; font-size: 16px; }
 body {
-    background: var(--bg-color, radial-gradient(circle, #1a1a2e, #16213e, #0f3460));
-    transition: background 2s ease-in-out;
+    font-family: var(--font-family);
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    direction: rtl;
+    line-height: 1.7;
+    padding-bottom: 90px; /* Space for floating buttons */
+    overflow-x: hidden; /* Prevent horizontal scroll */
+    position: relative; /* For potential ::before/::after effects */
 }
 
-body.light-mode .sidebar {
-    background: var(--sidebar-bg-light);
-    color: var(--sidebar-text-light);
-    box-shadow: var(--sidebar-shadow-light);
-    border-left: var(--sidebar-border-light);
-}
-
-body.light-mode .sidebar.visible {
-    box-shadow: 0 0 20px rgba(0, 153, 204, 0.5);
-    background: linear-gradient(135deg, #ffffff, #e6f7ff, #cceeff);
-    animation: glowPulseLight 2s infinite ease-in-out;
-}
-
-@keyframes glowPulseLight {
-    0% {
-        box-shadow: 0 0 10px rgba(0, 153, 204, 0.3);
-    }
-    50% {
-        box-shadow: 0 0 30px rgba(0, 153, 204, 0.6);
-    }
-    100% {
-        box-shadow: 0 0 10px rgba(0, 153, 204, 0.3);
-    }
-}
-
-/* Shapes in Sidebar */
-.sidebar::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: radial-gradient(circle at top right, rgba(255, 0, 150, 0.3), transparent);
-    animation: floatingShapes 10s infinite alternate ease-in-out;
-}
-
-@keyframes floatingShapes {
-    0% {
-        transform: translate(0, 0) rotate(0deg);
-    }
-    100% {
-        transform: translate(10px, 10px) rotate(360deg);
-    }
-}
-
-/* Button to Close Sidebar */
-.close-btn {
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    width: 40px;
-    height: 40px;
-    background: linear-gradient(135deg, #ff0000, #ff6347);
-    color: #fff;
-    font-size: 1.2em;
-    font-weight: bold;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.close-btn:hover {
-    transform: scale(1.3);
-    box-shadow: 0 0 20px rgba(255, 0, 0, 0.8);
-}
-
-/* Menu Toggle Button (Sidebar Button) */
-.menu-toggle {
-    position: fixed;
-    top: 15px;
-    right: 20px;
-    font-size: 1.5em;
-    background: none;
-    border: none;
-    cursor: pointer;
-    color: var(--sidebar-link, #fff);
-    z-index: 1100;
-    transition: color 0.5s ease, transform 0.3s ease;
-}
-
-.menu-toggle:hover {
-    transform: scale(1.2);
-    color: var(--sidebar-glow-light-active);
-}
-
-/* Top Bar */
-.top-bar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 20px;
-    background: var(--top-bar-bg, linear-gradient(135deg, #333, #444, #555));
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 70px;
-    z-index: 1000;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-    transition: background 1s ease-in-out, box-shadow 0.5s ease, transform 0.5s ease;
-    animation: topBarSlideIn 1s ease-in-out;
-}
-
-/* Animation for Top Bar appearance */
-@keyframes topBarSlideIn {
-    0% {
-        transform: translateY(-100%);
-        opacity: 0;
-    }
-    100% {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-/* Interactive Hover Effect */
-.top-bar:hover {
-    background: linear-gradient(135deg, #0099cc, #33b5ff, #1a1a2e);
-    box-shadow: 0 6px 20px rgba(51, 181, 255, 0.7);
-    transform: scale(1.02);
-}
-
-/* Dynamic Background for Light and Dark Modes */
-body.light-mode .top-bar {
-    --top-bar-bg: linear-gradient(135deg, #ffffff, #f1f1f1, #e6e6e6);
-    --top-bar-shadow: rgba(0, 0, 0, 0.2);
-    color: #333;
-}
-
-body.dark-mode .top-bar {
-    --top-bar-bg: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
-    --top-bar-shadow: rgba(0, 0, 0, 0.6);
-    color: #fff;
-}
-
-/* Buttons and Links inside Top Bar */
-.top-bar a,
-.top-bar button {
-    color: var(--text-color, #fff);
-    font-size: 1.1em;
-    font-weight: bold;
-    text-decoration: none;
-    padding: 10px 15px;
-    border-radius: 5px;
-    transition: background-color 0.4s ease, transform 0.3s ease;
-}
-
-.top-bar a:hover,
-.top-bar button:hover {
-    background-color: #33b5ff;
-    color: #fff;
-    transform: scale(1.1);
-    text-shadow: 0 0 10px #33b5ff;
-}
-
-/* Dynamic Glow Effect */
-.top-bar a::before,
-.top-bar button::before {
-  content: "\f111";
-  font-family: "Font Awesome 5 Free";
-  font-weight: 900;
-    position: absolute;
-    top: 50%;
-    left: -20px;
-    color: #33b5ff;
-    font-size: 1.2em;
-    transform: translateY(-50%);
-    animation: rotateIcon 2s linear infinite;
-}
-
-@keyframes rotateIcon {
-    0% {
-        transform: rotate(0deg) translateY(-50%);
-    }
-    100% {
-        transform: rotate(360deg) translateY(-50%);
-    }
-}
-
-/* Add a Pulsating Effect */
-.top-bar::after {
-    content: "";
-    position: absolute;
-    left: 50%;
-    bottom: -10px;
-    width: 80%;
-    height: 5px;
-    background: linear-gradient(90deg, rgba(51, 181, 255, 0.5), transparent);
-    animation: pulse 2s infinite alternate ease-in-out;
-    transform: translateX(-50%);
-}
-
-@keyframes pulse {
-    0% {
-        width: 70%;
-        opacity: 0.5;
-    }
-    100% {
-        width: 100%;
-        opacity: 1;
-    }
-}
-
-/* Responsive Adjustments */
-@media (max-width: 768px) {
-    .top-bar {
-        height: 60px;
-        padding: 8px 15px;
-    }
-
-    .top-bar a,
-    .top-bar button {
-        font-size: 1em;
-        padding: 8px 10px;
-    }
-}
-
-#search-container {
-    text-align: right;
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 60%;
-    display: flex;
-    justify-content: center;
-}
-
-/* Mode Toggle Button */
-.mode-toggle {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    width: 40px;
-    height: 40px;
-    background: var(--button-bg, rgba(255, 255, 255, 0.2));
-    color: #fff;
-    font-size: 1.2em;
-    font-weight: bold;
-    border-radius: 50%;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease;
-    box-shadow: 0 0 10px rgba(255, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.mode-toggle:hover {
-    background: var(--button-hover-bg, rgba(255, 255, 255, 0.3));
-    transform: scale(1.2);
-}
-
-/* Search Bar Styling */
-#search-input {
-    width: 80%;
-    padding: 12px 15px;
-    border-radius: 25px;
-    border: 3px solid var(--search-border, #66d9ff);
-    font-size: 16px;
-    background-color: var(--search-bg, rgba(255, 255, 255, 0.9));
-    color: var(--text-color, #fff);
-    transition: border-color 3s ease, background-color 3s ease;
-    text-align: right;
-}
-
-#search-input:focus {
-    outline: none;
-    border-color: #33b5ff;
-    box-shadow: 0 0 10px var(--search-focus-border, rgba(51, 181, 255, 0.6));
-}
-
-.search-btn {
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    background: var(--button-bg, #66d9ff);
-    color: white;
-    border: none;
-    padding: 10px 20px;
-    border-radius: 20px;
-    cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    transition: background-color 3s ease, transform 3s ease;
-}
-
-.search-btn:hover {
-    background: var(--button-hover-bg, #33b5ff);
-    transform: scale(1.1);
-}
-
-/* Banner Container */
-.banner-container {
-    height: 400px;
-    overflow: hidden;
-    position: relative;
-    background: linear-gradient(135deg, #1a1a2e, #16213e);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
-    border-radius: 20px;
-    transition: background-color 3s ease;
-    margin-top: 20px;
-}
-
-/* Images Wrapper */
-.banner-images {
-    display: flex;
-    transition: transform 0.5s ease-in-out;
-    position: relative;
-}
-
-/* Individual Images */
-.banner-images img {
-    width: 100%;
-    height: 400px;
-    object-fit: cover;
-    flex-shrink: 0;
-    border-radius: 20px;
-    transition: transform 0.6s ease, filter 0.6s ease, box-shadow 0.6s ease;
-}
-
-.banner-images img:hover {
-    transform: scale(1.1);
-    filter: brightness(1.2) contrast(1.1);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
-}
-
-/* Dots Indicator */
-.banner-dots {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 10px;
-}
-
-.banner-dots div {
-    width: 12px;
-    height: 12px;
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: 50%;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-.banner-dots div.active {
-    background: #33b5ff;
-    transform: scale(1.2);
-}
-
-.store-logo {
-    width: 140px;
-    height: 140px;
-    border-radius: 500%;
-    border: 4px solid #0099ff;
-    background-color: #333;
-    position: absolute;
-    top: 480px;
-    left: 50%;
-    transform: translateX(-50%);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-    transition: transform 0.3s, box-shadow 0.3s, background-color 0.3s;
-}
-
-.store-logo:hover {
-    transform: scale(1.1);
-    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
-}
-
-body.light-mode .store-logo {
-    background-color: #fff;
-    border: 4px solid #0099ff;
-}
-
-.store-name {
-    font-size: 2em;
-    color: inherit;
-    margin-top: 170px;
-    text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
-}
-
-body.light-mode .store-name {
-    color: #333;
-}
-
-/* Enhanced Keyframes with Smooth Pause and Zoom Effect */
-@keyframes enhancedSlide {
-    0% {
-        transform: translateX(0%);
-    }
-    20% {
-        transform: translateX(-100%);
-    }
-    40% {
-        transform: translateX(-200%);
-    }
-    60% {
-        transform: translateX(-300%);
-    }
-    80% {
-        transform: translateX(-400%);
-    }
-    100% {
-        transform: translateX(0%);
-    }
-}
-
-/* Add visual effect above images */
-.banner-container::before {
+/* Subtle background gradient */
+body::before {
     content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0));
-    pointer-events: none;
-    z-index: 1;
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    /* Example Gradient: Light Purple tone */
+    background: linear-gradient(135deg, hsla(263, 45%, 97%, 0.9), hsla(210, 16%, 96%, 0.95));
+    z-index: -1;
+    opacity: 0.7;
 }
 
-/* Products */
-.products {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin: 60px 20px;
+/* Screen Reader Only class */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	white-space: nowrap;
+	border: 0;
+}
+
+/* --- Page Layout --- */
+.page-container {
+    max-width: 760px; /* Slightly narrower */
+    margin: 40px auto; /* More space top/bottom */
     padding: 0 20px;
+    animation: fadeInPage 0.8s ease-out forwards; /* Page entry animation */
 }
 
-.product-card {
-    opacity: 0;
-    transform: translateY(20px);
-    transition: opacity 0.8s ease, transform 0.8s ease;
-}
-
-.product-card.visible {
-    opacity: 1;
-    transform: translateY(0);
-}
-
-.product-card {
-    background: var(--card-bg, linear-gradient(145deg, #16213e, #1a1a2e));
-    width: 260px;
-    border-radius: 16px;
-    padding: 20px;
+/* --- Header --- */
+.main-header {
     text-align: center;
-    box-shadow: 0 6px 20px var(--card-shadow, rgba(0, 0, 0, 0.3));
-    transition: transform 0.3s, box-shadow 0.3s;
-    color: var(--text-color, #ecf0f1);
+    margin-bottom: 40px;
+    padding: 25px 15px;
+    color: var(--primary-text);
+    animation: slideDownFade 0.6s ease-out 0.2s backwards; /* Header animation */
 }
-
-.product-card:hover {
-    transform: translateY(-10px) scale(1.05);
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+.main-header h1 {
+    margin-bottom: 12px;
+    font-weight: 800; /* Bolder */
+    font-size: 2.3rem;
+    color: var(--accent-color);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
 }
-
-.product-card img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-radius: 12px;
-    margin-bottom: 15px;
+.main-header .header-icon {
+    font-size: 2rem;
+    transform: rotate(-15deg); /* Slight playful rotation */
     transition: transform 0.3s ease-in-out;
 }
+.main-header:hover .header-icon {
+    transform: rotate(10deg) scale(1.1);
+}
+.main-header p {
+    font-size: 1.15rem;
+    color: var(--secondary-text);
+    max-width: 600px;
+    margin: 0 auto;
+}
 
-.product-card img:hover {
+/* --- Form Wrapper & Panel --- */
+.form-wrapper {
+    background-color: var(--form-bg);
+    padding: 35px 40px; /* More padding */
+    border-radius: var(--border-radius);
+    box-shadow: var(--box-shadow);
+    border: 1px solid var(--border-color);
+    position: relative; /* For potential pseudo-elements */
+    overflow: hidden; /* Clip potential overflow from animations */
+    animation: fadeInUpForm 0.7s ease-out 0.4s backwards; /* Form entry animation */
+}
+.order-form-panel .form-title {
+    text-align: center;
+    margin-bottom: 35px;
+    font-weight: 700; /* Bold title */
+    font-size: 1.9rem;
+    color: var(--accent-color);
+    position: relative;
+    padding-bottom: 10px;
+}
+/* Underline effect for title */
+.order-form-panel .form-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 3px;
+    background-color: var(--accent-color);
+    border-radius: 2px;
+    opacity: 0.8;
+}
+.order-form-panel .form-title i { margin-left: 12px; }
+
+/* --- Form Group Styling --- */
+.form-group {
+    margin-bottom: 25px; /* Increased spacing */
+    transition: transform 0.2s ease-out;
+}
+/* Subtle lift on hover for form groups */
+.form-group:focus-within {
+    transform: translateY(-2px);
+}
+.form-group label {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px; /* More space below label */
+    font-weight: 600;
+    font-size: 1.05rem; /* Slightly larger label */
+    color: #495057; /* Slightly darker than secondary */
+    cursor: pointer; /* Indicate it's clickable */
+    transition: color var(--transition-speed) ease;
+}
+.form-group label i {
+    margin-left: 10px; /* Increased icon spacing */
+    color: var(--accent-color);
+    opacity: 0.8;
+    width: 22px; /* Ensure alignment */
+    text-align: center;
+    font-size: 1.15em;
+    transition: transform 0.2s ease, opacity var(--transition-speed) ease;
+}
+/* Animate icon on label hover/focus */
+.form-group:focus-within label i,
+.form-group label:hover i {
     transform: scale(1.1);
+    opacity: 1;
 }
-
-.product-card h2 {
-    font-size: 1.6em;
-    margin: 15px 0;
+.form-group:focus-within label {
+    color: var(--accent-color);
+}
+.required-indicator { /* Style for the asterisk */
+    color: var(--danger-color);
     font-weight: bold;
+    margin-right: 4px; /* Space before asterisk */
 }
 
-.product-card button {
-    background-color: var(--button-bg, #66d9ff);
-    color: white;
-    padding: 10px 45px;
-    border: none;
-    border-radius: 30px;
+/* --- Inputs, Selects General --- */
+.form-group input[type="text"],
+.form-group input[type="number"],
+.form-group input[type="url"],
+.form-group select {
+    width: 100%;
+    padding: 13px 18px; /* More padding */
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    font-size: 1rem;
+    background-color: var(--input-bg);
+    color: var(--primary-text);
+    transition: border-color var(--transition-speed) ease-in-out,
+                box-shadow var(--transition-speed) ease-in-out,
+                background-color var(--transition-speed) ease-in-out;
+    font-family: inherit;
+    box-shadow: var(--box-shadow-inset); /* Subtle inner shadow */
+}
+.form-group select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%236c757d' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='m2 5 6 6 6-6'/%3e%3c/svg%3e"); /* Nicer SVG arrow */
+    background-repeat: no-repeat;
+    background-position: left 0.9rem center; /* Adjusted for RTL */
+    background-size: 16px 12px;
+    padding-left: 3rem; /* Make space for arrow */
     cursor: pointer;
-    font-size: 1em;
-    font-weight: bold;
-    text-transform: uppercase;
-    transition: background-color 3s ease, transform 3s ease;
+}
+/* Remove default number input spinners (optional) */
+.form-group input[type=number]::-webkit-outer-spin-button,
+.form-group input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+.form-group input[type=number] {
+  -moz-appearance: textfield; /* Firefox */
+}
+.form-group input:focus,
+.form-group select:focus {
+    border-color: var(--input-focus-border);
+    outline: 0;
+    box-shadow: var(--box-shadow-inset), 0 0 0 0.25rem var(--input-focus-shadow); /* Combine shadows */
+    background-color: #fff; /* Ensure white background on focus */
+}
+.form-group input::placeholder { color: #adb5bd; opacity: 1; transition: opacity 0.2s ease; }
+.form-group input:focus::placeholder { opacity: 0.5; } /* Fade placeholder on focus */
+.form-group select:disabled,
+.form-group input:disabled {
+    background-color: var(--readonly-bg);
+    opacity: 0.65; /* Slightly less opaque */
+    cursor: not-allowed;
+    box-shadow: none;
+}
+.form-group input[readonly] {
+    background-color: var(--readonly-bg);
+    border-color: var(--border-color);
+    cursor: default;
+    opacity: 0.9;
+    box-shadow: none;
 }
 
-.product-card button:hover {
-    background-color: var(--button-hover-bg, #33b5ff);
-    transform: scale(1.1);
+/* --- File Input Styling --- */
+.file-upload-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--input-border-color);
+    border-radius: var(--border-radius);
+    padding: 5px 5px 5px 15px; /* Adjust padding */
+    background-color: var(--input-bg);
+    transition: border-color var(--transition-speed) ease-in-out, box-shadow var(--transition-speed) ease-in-out;
+    box-shadow: var(--box-shadow-inset);
+    cursor: pointer;
+}
+.file-upload-wrapper:hover {
+    border-color: var(--accent-color);
+}
+input[type="file"] { /* Apply to both #screenshot-upload and #modal-screenshot-upload */
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0; /* Hide the actual input */
+    cursor: pointer;
+    z-index: 2; /* Above button/text */
+}
+.file-upload-button {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 15px;
+    background-color: var(--accent-color);
+    color: white;
+    border-radius: calc(var(--border-radius) - 2px); /* Slightly smaller radius */
+    cursor: pointer;
+    transition: background-color var(--transition-speed) ease;
+    margin-left: 10px; /* Space between button and filename */
+    white-space: nowrap;
+}
+.file-upload-button:hover {
+    background-color: var(--accent-hover);
+}
+.file-upload-button i {
+    margin-left: 8px;
+}
+.file-upload-filename {
+    flex-grow: 1;
+    font-size: 0.9rem;
+    color: var(--secondary-text);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    padding: 5px;
+}
+/* Style wrapper on input focus */
+input[type="file"]:focus + .file-upload-button {
+     box-shadow: 0 0 0 0.25rem var(--input-focus-shadow);
+}
+input[type="file"]:focus-within ~ .file-upload-wrapper { /* This might be needed */
+    border-color: var(--input-focus-border);
+    box-shadow: var(--box-shadow-inset), 0 0 0 0.25rem var(--input-focus-shadow);
+}
+input[type="file"]:disabled + .file-upload-button,
+input[type="file"]:disabled ~ .file-upload-wrapper {
+     opacity: 0.65;
+     cursor: not-allowed;
+     background-color: var(--readonly-bg);
+}
+input[type="file"]:disabled + .file-upload-button {
+    background-color: var(--secondary-text);
 }
 
-/* Back-to-Top Button */
-#back-to-top {
-    display: none;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
-    background-color: var(--button-bg, #27ae60);
+/* --- Hints and Limits --- */
+.input-hint {
+    display: block;
+    margin-top: 8px;
+    font-size: 0.875rem;
+    color: var(--secondary-text);
+    line-height: 1.4;
+}
+
+/* --- Error Messages --- */
+.error-message {
+    color: var(--danger-color);
+    font-size: 0.9rem;
+    margin-top: 8px;
+    display: none; /* Hidden by default */
+    font-weight: 600;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: opacity var(--transition-speed) ease, transform var(--transition-speed) ease;
+    line-height: 1.4;
+}
+.error-message.show { /* Class added by JS to show */
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+}
+.form-group input.invalid,
+.form-group select.invalid,
+.form-group .file-upload-wrapper.invalid { /* Target wrapper for file input error */
+    border-color: var(--danger-color);
+    background-color: #fdecea; /* Light red background */
+}
+.form-group input.invalid:focus,
+.form-group select.invalid:focus,
+.form-group input[type="file"].invalid:focus + .file-upload-wrapper, /* Adjust focus for file */
+.form-group input[type="file"]:focus:invalid + .file-upload-wrapper /* Another possibility */
+ {
+    border-color: var(--danger-color);
+    box-shadow: var(--box-shadow-inset), 0 0 0 0.25rem rgba(220, 53, 69, 0.25);
+}
+
+/* --- Details Row (Time & Charge) --- */
+.details-row {
+    display: grid; /* Use grid for better alignment */
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Responsive columns */
+    gap: 20px;
+    align-items: end; /* Align items to bottom for better label/input align */
+}
+.details-row.form-section { /* Added styles for when it's treated as a section */
+    margin-top: 15px;
+    margin-bottom: 30px; /* Space before main submit */
+    padding: 20px; /* More padding */
+    background-color: #f8f9fa; /* Light background */
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border-color);
+}
+.detail-item { margin-bottom: 0; } /* Remove bottom margin from grid items */
+.charge-display-input {
+    font-weight: 700;
+    font-size: 1.3rem; /* Larger charge display */
+    color: var(--price-color) !important;
+    text-align: center;
+    background-color: #e8f9ee !important; /* Lighter green */
+    border: 1px solid #a1e9bd !important; /* Softer green border */
+    padding: 10px 15px !important; /* Adjust padding if needed */
+    font-family: 'Cairo', sans-serif; /* Ensure font */
+}
+.charge-item label { justify-content: center; }
+
+/* --- Submit Button Group --- */
+.submit-group { margin-top: 35px; }
+.submit-button { /* General style for both main and modal buttons */
+    width: 100%;
+    padding: 15px 25px; /* Generous padding */
+    background: linear-gradient(135deg, var(--success-color), #1aa063); /* Subtle gradient */
     color: white;
     border: none;
-    padding: 15px;
+    border-radius: var(--border-radius);
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.15s ease, box-shadow 0.3s ease;
+    display: inline-flex; /* Changed to inline-flex for auto width on modal btn */
+    align-items: center;
+    justify-content: center;
+    position: relative; /* Needed for spinner */
+    overflow: hidden; /* Prevent spinner overflow */
+    box-shadow: 0 4px 10px rgba(25, 135, 84, 0.3); /* Color-matched shadow */
+    vertical-align: middle; /* Align properly if inline */
+}
+#submit-order-button {
+     width: 100%; /* Main button takes full width */
+}
+.submit-button .button-text {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    transition: opacity 0.2s ease;
+}
+.submit-button .button-text i {
+    margin-left: 10px;
+    font-size: 1.35rem; /* Slightly larger icon */
+    transition: transform 0.3s ease;
+}
+/* Specific hover for main submit button arrow */
+#submit-order-button:hover .button-text i {
+    transform: translateX(-4px);
+}
+.submit-button:hover {
+    background: linear-gradient(135deg, var(--success-hover), #158050);
+    transform: translateY(-3px) scale(1.01); /* Lift effect */
+    box-shadow: 0 7px 15px rgba(25, 135, 84, 0.4);
+}
+.submit-button:active {
+    transform: translateY(-1px) scale(0.99);
+    box-shadow: 0 2px 5px rgba(25, 135, 84, 0.3);
+}
+.submit-button:disabled {
+    background: var(--secondary-text);
+    cursor: not-allowed;
+    opacity: 0.7;
+    box-shadow: none;
+    transform: none;
+}
+.submit-button:disabled:hover {
+     background: var(--secondary-text); /* Prevent hover gradient change when disabled */
+     transform: none;
+     box-shadow: none;
+}
+/* Loading Spinner */
+.spinner {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
     border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    position: absolute; /* Position inside the button */
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+.submit-button.loading .button-text {
+    opacity: 0; /* Hide text when loading */
+}
+.submit-button.loading .spinner {
+    display: inline-block; /* Show spinner */
+}
+/* Shake animation for submit button error */
+.shake-error {
+    animation: shake 0.6s cubic-bezier(.36,.07,.19,.97) both;
+    background: linear-gradient(135deg, var(--danger-color), #c82333) !important; /* Red gradient on shake, use important if needed */
+    box-shadow: 0 4px 10px rgba(220, 53, 69, 0.3);
+}
+
+
+/* --- Modal Styles --- */
+.modal-overlay {
+    position: fixed;
+    inset: 0; /* top, right, bottom, left = 0 */
+    background-color: rgba(33, 37, 41, 0.7); /* Dark overlay with transparency */
+    display: flex; /* Use flex to center content */
+    align-items: center;
+    justify-content: center;
+    z-index: 1050; /* Higher than floating buttons */
+    padding: 20px;
+    opacity: 0; /* Hidden initially */
+    visibility: hidden; /* Hidden initially */
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1), visibility 0s linear 0.4s; /* Fade transition */
+}
+.modal-overlay.active {
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.modal-content {
+    background-color: var(--form-bg);
+    border-radius: var(--border-radius); /* Use defined radius */
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.2); /* Stronger shadow for modal */
+    padding: 30px 35px;
+    max-width: 600px; /* Max width for the modal */
+    width: 100%;
+    position: relative;
+    max-height: 90vh; /* Limit height and allow scroll */
+    overflow-y: auto; /* Enable vertical scroll if content overflows */
+    transform: scale(0.9) translateY(20px); /* Initial state for animation */
+    transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+.modal-overlay.active .modal-content {
+    transform: scale(1) translateY(0); /* Final state for animation */
+}
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    left: 15px; /* Adjusted for RTL */
+    background: transparent;
+    border: none;
+    font-size: 2rem;
+    font-weight: 300;
+    line-height: 1;
+    color: var(--secondary-text);
     cursor: pointer;
-    font-size: 1.2em;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transition: background-color 3s ease, transform 3s ease;
+    padding: 0.5rem;
+    transition: color 0.2s ease, transform 0.2s ease;
+}
+.modal-close-button:hover {
+    color: var(--primary-text);
+    transform: scale(1.1);
+}
+.modal-title {
+    text-align: center;
+    font-size: 1.7rem;
+    font-weight: 700;
+    color: var(--accent-color);
+    margin-bottom: 25px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--border-color);
+}
+.modal-title i {
+    margin-left: 10px;
+}
+.modal-section {
+    margin-bottom: 25px;
+}
+.modal-section:last-of-type {
+    margin-bottom: 0;
+}
+.modal-section h3 {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: var(--primary-text);
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+.modal-section h3 i {
+    margin-left: 10px;
+    color: var(--accent-color);
+    opacity: 0.8;
+}
+/* Order Summary specific styles */
+.order-summary p {
+    margin-bottom: 8px;
+    font-size: 1.05rem;
+    line-height: 1.6;
+}
+.order-summary p strong {
+    min-width: 80px; /* Align labels */
+    display: inline-block;
+    color: var(--secondary-text);
+}
+.order-summary code { /* Style for the link */
+    display: inline-block; /* Allow wrapping */
+    word-break: break-all; /* Break long links */
+    background-color: var(--readonly-bg);
+    padding: 3px 6px;
+    border-radius: 4px;
+    font-size: 0.95rem;
+    color: var(--primary-text);
+    max-width: calc(100% - 90px); /* Prevent pushing strong */
+    vertical-align: middle;
+}
+.summary-charge {
+    margin-top: 15px !important;
+    padding-top: 10px;
+    border-top: 1px dashed var(--border-color);
+    font-size: 1.15rem !important;
+    font-weight: bold;
+}
+.summary-charge strong {
+    color: var(--primary-text) !important;
+}
+.summary-charge span {
+    color: var(--success-color);
+    font-weight: 700;
+    font-size: 1.25rem;
+}
+/* Payment Instructions within Modal */
+.payment-instructions-modal p {
+    margin-bottom: 15px;
+    line-height: 1.7;
+    font-size: 1rem;
+}
+.payment-instructions-modal .payment-methods {
+     list-style: none;
+     padding: 0;
+     margin-bottom: 15px;
+}
+.payment-instructions-modal .payment-methods li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    background-color: #f8f9fa; /* Slightly different bg */
+    padding: 8px 12px;
+    border-radius: calc(var(--border-radius) / 1.5);
+    border: 1px solid #e9ecef;
+}
+.payment-instructions-modal .payment-methods li i { margin-left: 10px; font-size: 1.2rem; width: 22px; text-align: center; flex-shrink: 0;}
+.payment-instructions-modal .payment-methods li strong { margin-left: 8px; font-weight: 600;}
+.payment-instructions-modal .payment-methods li code { background-color: #e9ecef; padding: 2px 5px; border-radius: 3px; font-family: monospace; font-size: 1rem; color: var(--primary-text); margin-right: auto; }
+.payment-instructions-modal .payment-methods li span { font-weight: 600; letter-spacing: 0.5px; margin-right: auto; direction: ltr; text-align: left;}
+.payment-instructions-modal .payment-note {
+    margin-top: 15px;
+    padding: 10px;
+    background-color: #fff3cd;
+    border-radius: var(--border-radius);
+    border: 1px solid #ffeeba;
+    font-size: 0.9rem;
+}
+.payment-instructions-modal .payment-note strong { color: #856404; }
+/* Screenshot Upload within Modal */
+.screenshot-upload-modal .form-group {
+    margin-bottom: 0; /* Remove extra margin if inside modal section */
+}
+/* Ensure error border shows on modal file input wrapper */
+.screenshot-upload-modal .file-upload-wrapper.invalid {
+     border-color: var(--danger-color) !important;
+     background-color: #fdecea;
+}
+/* Modal Separator */
+.modal-separator {
+    border: 0;
+    border-top: 1px solid var(--border-color);
+    margin: 25px 0;
+}
+/* Modal Footer and Confirm Button */
+.modal-footer {
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    text-align: center;
+}
+.modal-confirm-button {
+    width: auto; /* Don't force full width */
+    min-width: 250px; /* Minimum width */
+    padding: 14px 30px; /* Adjust padding */
+    font-size: 1.1rem; /* Slightly smaller than main submit */
+    box-shadow: 0 4px 8px rgba(25, 135, 84, 0.25);
+}
+.modal-confirm-button .button-text i {
+    font-size: 1.2rem;
+}
+.modal-confirm-button:hover {
+     box-shadow: 0 6px 12px rgba(25, 135, 84, 0.35);
+}
+.modal-confirm-button:active {
+     box-shadow: 0 2px 4px rgba(25, 135, 84, 0.25);
+}
+
+
+/* --- Floating Buttons --- */
+.floating-buttons {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    animation: popInButtons 0.5s ease-out 1s backwards; /* Buttons appear after load */
+}
+.fab {
     display: flex;
     justify-content: center;
     align-items: center;
+    width: 58px;
+    height: 58px;
+    border-radius: 50%;
+    color: white;
+    font-size: 26px;
+    text-decoration: none;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), /* Elastic pop */
+                box-shadow 0.3s ease, background-color 0.3s ease;
+}
+.fab:hover {
+    transform: scale(1.15) rotate(10deg); /* More playful hover */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+.whatsapp-fab { background-color: var(--whatsapp-color); }
+.whatsapp-fab:hover { background-color: #1ebe5b; }
+.telegram-fab { background-color: var(--telegram-color); }
+.telegram-fab:hover { background-color: #0077b5; }
+
+/* --- Footer --- */
+.main-footer {
+    text-align: center;
+    margin-top: 50px;
+    padding: 30px 15px;
+    color: var(--secondary-text);
+    font-size: 0.95rem;
+    border-top: 1px solid var(--border-color);
+    background-color: rgba(255, 255, 255, 0.5); /* Slightly transparent white */
+}
+.footer-link {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+.footer-link:hover {
+    color: var(--accent-hover);
+    text-decoration: underline;
 }
 
-#back-to-top:hover {
-    background-color: var(--button-hover-bg, #1e8449);
-    transform: scale(1.2);
+/* --- Keyframe Animations --- */
+@keyframes fadeInPage {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes slideDownFade {
+    from { opacity: 0; transform: translateY(-20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+@keyframes fadeInUpForm {
+     from { opacity: 0; transform: translateY(30px) scale(0.98); }
+     to { opacity: 1; transform: translateY(0) scale(1); }
+}
+@keyframes spin {
+    to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+@keyframes shake {
+  10%, 90% { transform: translate3d(-1px, -1px, 0); }
+  20%, 80% { transform: translate3d(2px, 2px, 0); }
+  30%, 50%, 70% { transform: translate3d(-4px, -4px, 0); }
+  40%, 60% { transform: translate3d(4px, 4px, 0); }
+}
+@keyframes popInButtons {
+    from { opacity: 0; transform: scale(0.5); }
+    to { opacity: 1; transform: scale(1); }
 }
 
-/* Ripple Effect for Buttons */
-button:active {
-    transform: scale(0.95);
-    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.2);
-}
 
-/* Responsive Design */
+/* --- Responsiveness --- */
 @media (max-width: 768px) {
-    .search-container {
-        width: 90%;
-    }
+    .page-container { margin: 30px auto; padding: 0 15px; }
+    .form-wrapper { padding: 30px 25px; }
+    .details-row { grid-template-columns: 1fr; gap: 15px; } /* Stack details */
+    .details-row.form-section { padding: 15px; }
+    .floating-buttons { right: 20px; bottom: 20px; }
+    .fab { width: 52px; height: 52px; font-size: 24px; }
+    .main-header h1 { font-size: 2rem; }
+    .main-header p { font-size: 1.1rem; }
+    .order-form-panel .form-title { font-size: 1.7rem; }
+}
 
-    .products {
-        flex-direction: column;
-        align-items: center;
-    }
+@media (max-width: 576px) {
+    html { font-size: 15px; } /* Adjust base font size */
+    .page-container { margin: 20px auto; }
+    .form-wrapper { padding: 25px 20px; }
+    .main-header h1 { font-size: 1.8rem; gap: 8px; }
+    .main-header .header-icon { font-size: 1.7rem; }
+    .main-header p { font-size: 1rem; }
+    .order-form-panel .form-title { font-size: 1.6rem; margin-bottom: 30px;}
+    .form-group input, .form-group select { padding: 12px 15px; }
+    .file-upload-button { padding: 7px 12px; font-size: 0.9em; }
+    .file-upload-filename { font-size: 0.85rem; }
+    .submit-button { padding: 14px 20px; font-size: 1.1rem; }
+    #submit-order-button { font-size: 1.05rem;} /* Adjust main button text slightly more */
+    .floating-buttons { right: 15px; bottom: 15px; gap: 10px; }
+    .fab { width: 48px; height: 48px; font-size: 22px; }
 
-    .product-card {
-        width: 90%;
+    /* Modal Responsive */
+    .modal-content {
+        padding: 25px 20px;
+        max-height: 85vh;
     }
-
-    .banner-container {
-        height: 300px;
+    .modal-title {
+        font-size: 1.5rem;
+        margin-bottom: 20px;
     }
-
-    .banner-images img {
-        height: 300px;
+     .modal-section h3 {
+        font-size: 1.2rem;
+        margin-bottom: 12px;
     }
-
-      .store-logo {
-        width: 120px;
-        height: 120px;
-        top: 420px;
-    }
-
-    .store-name {
-        font-size: 1.7em;
-        margin-top: 140px;
-    }
+    .order-summary p { font-size: 1rem; }
+    .order-summary code { font-size: 0.9rem; max-width: calc(100% - 70px);}
+    .summary-charge { font-size: 1.1rem !important; }
+    .summary-charge span { font-size: 1.15rem; }
+    .payment-instructions-modal .payment-methods li { font-size: 0.95rem; padding: 6px 10px;}
+    .payment-instructions-modal .payment-methods li i { font-size: 1.2rem; width: 22px; margin-left: 10px;}
+    .modal-footer { margin-top: 25px; padding-top: 15px;}
+    .modal-confirm-button { min-width: 180px; width: 100%; padding: 12px 20px; font-size: 1rem; } /* Make modal button full width on mobile */
+    .modal-close-button { top: 10px; left: 10px; font-size: 1.8rem;}
 }
 
 
-.almarai-light {
-  font-family: "Almarai", serif;
-  font-weight: 300;
-  font-style: normal;
+/* --- Accessibility focus outline --- */
+*:focus-visible {
+     outline: 3px solid var(--accent-hover); /* Make outline more visible */
+     outline-offset: 2px;
+     box-shadow: none; /* Override other focus shadows if needed */
+     border-radius: 2px; /* Slight radius on outline */
 }
-
-.almarai-regular {
-  font-family: "Almarai", serif;
-  font-weight: 400;
-  font-style: normal;
+/* Remove default focus styles conflicting with focus-visible */
+*:focus {
+    outline: none; /* Remove default blue/black outline */
 }
-
-.almarai-bold {
-  font-family: "Almarai", serif;
-  font-weight: 700;
-  font-style: normal;
+/* Keep specific input focus styles (shadow) but rely on focus-visible for the outline */
+.form-group input:focus,
+.form-group select:focus {
+    /* Keep the box-shadow from original rules */
+    box-shadow: var(--box-shadow-inset), 0 0 0 0.25rem var(--input-focus-shadow);
+    border-color: var(--input-focus-border); /* Keep border color change */
 }
-
-.almarai-extrabold {
-  font-family: "Almarai", serif;
-  font-weight: 800;
-  font-style: normal;
+/* Ensure file input focus styles work well with focus-visible */
+input[type="file"]:focus-visible + .file-upload-button {
+     box-shadow: none; /* Remove the shadow, rely on main wrapper focus */
 }
+input[type="file"]:focus-visible ~ .file-upload-wrapper {
+    /* Rely on the global *:focus-visible outline */
+    border-color: var(--input-focus-border); /* Keep border color */
+    box-shadow: var(--box-shadow-inset); /* Keep inset shadow */
+    }
