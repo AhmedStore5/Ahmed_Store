@@ -63,8 +63,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     id: 2001,
                     name: "مشاهدات فيديو [ غير محدود ♾️ ] [ فوري 🚀 ] [ 5 مليون/يوم ] [ رخيص 💰]",
                     // 13 EGP per 100,000 => 13/100 = 0.13 EGP per 1000
-                    price_per_1000_egp: 13.0,
-                    min_quantity: 1000, // Default assumption
+                    price_per_100000_egp: 13.0,
+                    min_quantity: 10000, // Default assumption
                     max_quantity: 999999999, // Effectively unlimited
                     avg_time: "فوري - 5 مليون/يوم"
                  },
@@ -72,8 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     id: 2002,
                     name: "مشاهدات فيديو [ غير محدود ♾️ ] [ فوري 🚀 ] [ 15 مليون/يوم ] [ ضمان مدى الحياة ♻️]",
                     // 22 EGP per 100,000 => 22/100 = 0.22 EGP per 1000
-                    price_per_1000_egp: 22.0,
-                    min_quantity: 1000, // Default assumption
+                    price_per_100000_egp: 22.0,
+                    min_quantity: 10000, // Default assumption
                     max_quantity: 999999999, // Effectively unlimited
                     avg_time: "فوري - 15 مليون/يوم"
                  }
