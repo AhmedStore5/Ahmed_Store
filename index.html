@@ -1,137 +1,129 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="نحن متميزون بشحن جميع الالعاب الإلكترونية نحن الأمن علي الإطلاق وبإذن الله سوف نصبح الافضل">
-    <meta name="keywords" content="شحن الالعاب , ببجي , فري فاير">
-    <meta name="author" content="❖ 𓆩✦𓆪 𝑨𝑯𝑴𝑬𝑫 ⋆ 𝑺𝑻𝑶𝑹𝑬 𓆩✦𓆪  
-𓊈 مــتــجــر 𓊉">
-    <link rel="icon" href="https://g.top4top.io/p_3245mrwj23.jpg" type="image/x-icon">
-    <title>Ahmed Store</title>
+    <meta name="description" content="Ahmed Store - متجر شحن فوري للألعاب ورشق المنصات بأسعار تنافسية وطرق دفع آمنة في مصر.">
+    <title>Ahmed Store - شحن ألعاب ورشق منصات | دفع آمن</title>
+    <!-- Favicon, Fonts, Font Awesome, CSS Link (Keep As Is) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="style.css">
-    <!-- إضافة مكتبة FontAwesome -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
 </head>
+<body>
 
-<body class="fade-in">
-    <!-- زر القائمة الجانبية -->
-    <button class="menu-toggle" onclick="toggleSidebar()">☰</button>
-
-    <!-- القائمة الجانبية -->
-    <aside id="sidebar" class="sidebar">
-      <button class="close-btn" onclick="toggleSidebar()">✖</button>
-         <button id="toggle-mode" class="mode-toggle" onclick="toggleMode()">🌞</button>
-      <ul>
-        <br><br>
-        <li class="product-card"><a href="#home" onclick="href='index.html'">الرئيسية</a></li>
-        <li class="product-card"><a href="#producd"> المنتجات</a></li>
-        <li class="product-card"><a href="#about">حول المتجر</a></li>
-        <li class="product-card"><a href="#contact">اتصل بنا</a></li>
-        
-      </ul>
-</div>
-    </aside>
-    
-
-    <!-- شريط علوي يحتوي على حقل البحث وزر التبديل بين الوضعين -->
-    <div class="top-bar">
-        <div id="search-container">
-            <input type="text" id="search-input" placeholder="ابحث عن منتج..." onkeyup="searchProducts()">
-        </div>
-    </div>
-
-    <header class="header">
-        <div class="banner-container">
-  <div class="banner-images">
-    <img src="https://c.top4top.io/p_3260jfmmn0.jpeg" alt="Image 1">
-    <img src="https://d.top4top.io/p_3260xh7y90.jpeg" alt="Image 2" onclick="buyProduct('pubg')">
-    <img src="https://e.top4top.io/p_32601my491.jpeg" alt="Image 3" onclick="buyProduct('freefire')">
-    <!-- أضف المزيد من الصور حسب الحاجة -->
-  </div>
-  <div class="banner-dots">
-    <div class="dot active" data-index="0"></div>
-    <div class="dot" data-index="1"></div>
-    <div class="dot" data-index="2"></div>
-    <!-- أضف المزيد حسب عدد الصور -->
-  </div>
-</div>
-
-        </div>
-        <img src="https://g.top4top.io/p_3245mrwj23.jpg" alt="Store Logo" class="store-logo">
-        <div class="store-info">
-            <div class="store-name">Ahmed Store متجر</div>
+    <!-- ==== Header ==== -->
+    <header id="main-header">
+         <div class="container">
+            <div class="logo">
+                 <h1><a href="index.html" id="logo-link" aria-label="Ahmed Store الصفحة الرئيسية"><i class="fas fa-gamepad"></i> Store <span class="highlight">Ahmed</span></a></h1>
+            </div>
+            <nav id="main-nav" aria-label="القائمة الرئيسية">
+                 <ul>
+                    <li><a href="#hero" class="nav-main-link">الرئيسية</a></li>
+                    <li><a href="#featured-games" class="nav-main-link">الألعاب</a></li>
+                    <li><a href="رشق/index.html" class="nav-main-link">رشق المنصات</a></li>
+                    <li><a href="#services" class="nav-main-link">خدماتنا</a></li>
+                    <li><a href="#contact" class="nav-main-link">تواصل معنا</a></li>
+                </ul>
+            </nav>
+           
+            <button id="theme-toggle" aria-label="تبديل لوضع الإضاءة الداكنة">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="menu-toggle" aria-label="فتح / إغلاق قائمة التنقل" aria-expanded="false" aria-controls="main-nav"><i class="fas fa-bars"></i></button>
         </div>
     </header>
-    
-    <!-- قائمة المنتجات -->
-    <section class="products">
-        <div class="product-card">
-            <img src="https://h.top4top.io/p_3245qbdpx3.jpeg" alt="PUBG Mobile">
-            <h2>ببجي موبايل</h2>
-            <button title="buy now" onclick="buyProduct('pubg')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://d.top4top.io/p_3245hljsn0.jpeg" alt="Free Fire">
-            <h2>فري فاير</h2>
-            <button onclick="buyProduct('freefire')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://l.top4top.io/p_32454nex88.jpeg" alt="Call of Duty">
-            <h2>كول اوف ديوتي</h2>
-            <button onclick="buyProduct('callofduty')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://e.top4top.io/p_3245jlu1w1.png" alt="Google Play Card">
-            <h2>بطاقات جوجل بلاي</h2>
-            <button onclick="buyProduct('googleplay')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://g.top4top.io/p_32451rgla3.jpeg" alt="Steam Card">
-            <h2>بطاقات ستيم</h2>
-            <button onclick="buyProduct('steam')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://j.top4top.io/p_3245yba9a6.jpeg" alt="Minecraft">
-            <h2>ماين كرافت</h2>
-            <button onclick="buyProduct('minecraft')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://i.top4top.io/p_3245yccn05.jpeg" alt="Amazon Card">
-            <h2>بطاقات امازون</h2>
-            <button onclick="buyProduct('amazon')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://f.top4top.io/p_3245zift12.jpeg" alt="Apple Card">
-            <h2>بطاقات ابل</h2>
-            <button onclick="buyProduct('apple')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://k.top4top.io/p_3245hh15k7.jpeg" alt="Yalla Ludo">
-            <h2>يلا لودو</h2>
-            <button onclick="buyProduct('yallaludo')">شراء</button>
-        </div>
-        <div class="product-card">
-            <img src="https://h.top4top.io/p_3245hqlu84.jpeg" alt="Mobile Legends">
-            <h2>موديل ليجيندس</h2>
-            <button onclick="buyProduct('mobilelegends')">شراء</button>
-        </div>
-    </section>
 
-    <!-- زر العودة للأعلى -->
-    <button id="back-to-top">🔝</button>
-    
-    
-    <script>
-        // دالة لتمرير اسم اللعبة إلى صفحة اختيار المنتجات
-        function buyProduct(game) {
-            // تغيير الرابط لصفحة المنتجات مع إضافة اسم اللعبة
-            window.location.href = `products.html?game=${game}`;
-        }
-      
-    </script>
+    <!-- ==== Main Content Wrapper ==== -->
+    <main id="main-content-wrapper">
+        <!-- ==== Hero Section ==== -->
+        <section id="hero" class="main-view" aria-labelledby="hero-heading">
+             <div class="hero-content">
+                <h2 id="hero-heading">متجرك الأول للشحن الفوري ودعم المنصات!</h2>
+                <p>Ahmed Store يقدم لك تجربة شحن ورشق سلسة وآمنة بأفضل الأسعار بالجنيه المصري.</p>
+                <a href="#featured-games" class="btn btn-primary btn-lg pulse nav-main-link">تصفح الخدمات الآن <i class="fas fa-chevron-down" aria-hidden="true"></i></a>
+            </div>
+            <div class="hero-overlay" aria-hidden="true"></div>
+        </section>
 
+        <!-- ==== Featured Games Section ==== -->
+        <section id="featured-games" class="section-padding main-view" aria-labelledby="featured-games-title">
+            <div class="container">
+                <h2 id="featured-games-title" class="section-title">شحن الألعاب والبطاقات</h2>
+                <div class="games-grid">
+                    <div class="game-card animate-on-scroll">
+                        <img src="https://b.top4top.io/p_3383zn7lo0.jpeg" alt="شعار لعبة فري فاير" loading="lazy" width="300" height="180">
+                        <div class="card-content"> <h3>شحن جواهر فري فاير</h3> <p>أسرع شحن لجواهر فري فاير عبر ID اللاعب مباشرة.</p> <a href="freefire.html" class="btn btn-secondary">عرض الباقات <i class="fas fa-arrow-left" aria-hidden="true"></i></a> </div>
+                    </div>
+                    <div class="game-card animate-on-scroll">
+                        <img src="https://c.top4top.io/p_3383oudrb1.jpeg" alt="شعار شدات UC لعبة ببجي موبايل" loading="lazy" width="300" height="180">
+                        <div class="card-content"> <h3>شحن شدات ببجي موبايل</h3> <p>احصل على شدات UC بأفضل الأسعار مع عروض مستمرة.</p> <a href="pubg.html" class="btn btn-secondary">عرض الباقات <i class="fas fa-arrow-left" aria-hidden="true"></i></a> </div>
+                    </div>
+                     <div class="game-card animate-on-scroll">
+                        <img src="https://e.top4top.io/p_3383787eb0.jpg" alt="شعار فيفا" loading="lazy" width="300" height="180">
+                        <div class="card-content"> <h3>شحن فيفا موبيل</h3> <p>اشحن بسهولة نقاط وسلفر فيفا</p> <a href="valorant.html" class="btn btn-secondary">عرض الباقات <i class="fas fa-arrow-left" aria-hidden="true"></i></a> </div>
+                    </div>
+                    <div class="game-card animate-on-scroll">
+                        <img src="https://d.top4top.io/p_3383mhbgr2.jpeg" alt="شعار لعبة روبلوكس" loading="lazy" width="300" height="180">
+                        <div class="card-content"> <h3>شحن روبوكس Roblox</h3> <p>عزز مغامراتك في عالم Roblox بشحن الروبوكس الآن.</p> <a href="roblox.html" class="btn btn-secondary">عرض الباقات <i class="fas fa-arrow-left" aria-hidden="true"></i></a> </div>
+                    </div>
+                    <div class="game-card animate-on-scroll">
+                         <img src="https://e.top4top.io/p_33831i6o10.png" alt="شعار جوجل بلاي" loading="lazy" width="300" height="180">
+                        <div class="card-content"> <h3>بطاقات جوجل بلاي</h3> <p>اشحن رصيد حسابك (المتجر الأمريكي).</p> <a href="googleplay.html" class="btn btn-secondary">عرض البطاقات <i class="fas fa-arrow-left" aria-hidden="true"></i></a> </div>
+                    </div>
+                    <div class="game-card animate-on-scroll">
+                         <img src="https://www2.0zz0.com/2025/04/06/23/853258506.png" alt="شعار لوردس Store" loading="lazy" width="300" height="180" style="object-fit: contain; padding: 5px; background-color: #f0f0f0;">
+                        <div class="card-content"> <h3>شحن لوردس موبيل Lords</h3> <p>اشحن الان Lords بأفضل الأسعار.</p> <a href="appstore.html" class="btn btn-secondary">عرض الباقات <i class="fas fa-arrow-left" aria-hidden="true"></i></a> </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+         <!-- ==== Services Section ==== -->
+         <section id="services" class="section-padding main-view" aria-labelledby="services-title">
+            <div class="container">
+                 <h2 id="services-title" class="section-title">لماذا تختار Ahmed Store؟</h2>
+                 <div class="services-grid">
+                      <div class="service-item animate-on-scroll"> <i class="fas fa-bolt" aria-hidden="true"></i> <h4>شحن فوري</h4> <p>توصيل سريع لطلباتك بمجرد إتمام الدفع والتأكيد.</p> </div>
+                      <div class="service-item animate-on-scroll"> <i class="fas fa-shield-alt" aria-hidden="true"></i> <h4>أمان تام</h4> <p>عمليات دفع آمنة وحماية كاملة لحسابك.</p> </div>
+                      <div class="service-item animate-on-scroll"> <i class="fas fa-headset" aria-hidden="true"></i> <h4>دعم فني</h4> <p>فريق دعم جاهز لمساعدتك عبر واتساب.</p> </div>
+                      <div class="service-item animate-on-scroll"> <i class="fas fa-tags" aria-hidden="true"></i> <h4>أسعار تنافسية</h4> <p>نقدم لك أفضل العروض والأسعار بالجنيه المصري.</p> </div>
+                 </div>
+             </div>
+         </section>
+
+         <!-- ==== Contact Section ==== -->
+         <section id="contact" class="section-padding bg-light main-view" aria-labelledby="contact-title">
+           <div class="container">
+                <h2 id="contact-title" class="section-title">تواصل معنا</h2>
+                <p style="text-align: center; margin-bottom: 2rem;">للطلبات والاستفسارات، يمكنك التواصل معنا مباشرة عبر واتساب أو البريد:</p>
+                <div class="contact-info">
+                     <a href="https://wa.me/201554751270" target="_blank" rel="noopener noreferrer" class="btn btn-contact btn-lg"><i class="fab fa-whatsapp" aria-hidden="true"></i> تحدث معنا الآن</a>
+                     <a href="mailto:support@ahmedstore.example.com" class="btn btn-contact btn-lg"><i class="fas fa-envelope" aria-hidden="true"></i> راسلنا بريدياً</a>
+                </div>
+            </div>
+         </section>
+    </main> <!-- End Main Content Wrapper -->
+
+    <!-- ==== Footer ==== -->
+    <footer id="main-footer">
+       <div class="container">
+           <div class="footer-content">
+               <p>© <span id="current-year">2024</span> Ahmed Store. جميع الحقوق محفوظة.</p>
+               <div class="social-links" aria-label="روابط التواصل الاجتماعي">
+
+                   <a href="https://www.facebook.com/share/162yH7EKni/" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f" aria-hidden="true"></i></a>
+                   <a href="https://chat.whatsapp.com/FLFQOgA4wEy88AWa3s2vAD" aria-label="whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+                   <a href="https://chat.whatsapp.com/H3KirIXSTwe8vQR0Sknagj" aria-label="whatsapp" target="_blank" rel="noopener noreferrer"><i class="fab fa-whatsapp" aria-hidden="true"></i></a>
+               </div>
+           </div>
+       </div>
+    </footer>
+
+    <!-- Link to JavaScript file -->
     <script src="script.js"></script>
 </body>
-    </html>
+                                                                                                                   </html>
