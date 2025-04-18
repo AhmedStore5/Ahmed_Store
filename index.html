@@ -1,146 +1,179 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>الدفع عبر فودافون كاش (Paymob)</title>
-    <style>
-        /* يمكنك تحسين هذه التنسيقات كما تشاء */
-        body {
-            font-family: 'Tahoma', sans-serif; /* استخدام خط مألوف */
-            padding: 20px;
-            background-color: #f4f4f4;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: 100vh;
-        }
-        .container {
-            background-color: #fff;
-            padding: 30px 40px; /* زيادة الحشو */
-            border-radius: 8px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1); /* ظل أكثر وضوحًا */
-            max-width: 450px; /* زيادة العرض قليلاً */
-            width: 100%; /* ضمان التجاوب */
-            margin: 20px;
-            border-top: 5px solid #e60000; /* شريط علوي بلون فودافون */
-        }
-        h1 {
-            color: #333;
-            text-align: center;
-            margin-bottom: 30px; /* مسافة أكبر */
-            font-size: 24px; /* تكبير الخط */
-        }
-        label {
-            display: block;
-            margin-bottom: 8px;
-            color: #555;
-            font-weight: bold;
-            font-size: 14px;
-        }
-        input[type="number"], input[type="text"] {
-            width: 100%;
-            padding: 12px; /* زيادة الحشو داخل الحقل */
-            margin-bottom: 25px; /* مسافة أكبر */
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
-            font-size: 16px; /* خط أكبر داخل الحقل */
-        }
-        /* لتغيير شكل أزرار زيادة/نقصان الأرقام (اختياري) */
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-             -webkit-appearance: none;
-             margin: 0;
-        }
-        input[type=number] {
-            -moz-appearance: textfield; /* Firefox */
-        }
-        button {
-            background-color: #e60000; /* لون فودافون */
-            color: white;
-            padding: 14px 20px; /* زر أكبر */
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 18px; /* خط أكبر للزر */
-            font-weight: bold;
-            width: 100%;
-            transition: background-color 0.3s ease, transform 0.1s ease;
-        }
-        button:hover {
-            background-color: #c00; /* أغمق قليلاً عند المرور */
-        }
-         button:active {
-            transform: scale(0.98); /* تأثير الضغط */
-         }
-        .error {
-            color: #a94442; /* أحمر غامق للخطأ */
-            background-color: #f2dede; /* خلفية وردية فاتحة */
-            border: 1px solid #ebccd1; /* إطار خفيف */
-            padding: 10px 15px;
-            margin-top: -15px;
-            margin-bottom: 15px;
-            border-radius: 4px;
-            font-size: 14px;
-            text-align: center;
-        }
-        .paymob-logo { /* اختياري: لوجو Paymob */
-             display: block;
-             margin: 0 auto 20px auto;
-             max-width: 100px;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>متجر الخدمات الرقمية - تصميم احترافي</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="rsh.css">
+<link rel="icon" href="https://f.top4top.io/p_3385vnlye0.png" type="image/x-icon">
+<meta property="og:image" content="https://f.top4top.io/p_3385vnlye0.png">
+<meta property="og:title" content="مـتـجـر Ahmed Store - تصميم احترافي">
+<meta property="og:description" content="اطلب خدماتك الرقمية بأناقة وسهولة.">
+<meta property="og:url" content="Ahmed_Store.com">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#14b8a6">
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+<script type="text/javascript">
+(function(){ emailjs.init({ publicKey: "uQQ69J4PF5hOEXokc" }); })(); // Replace with your Public Key
+</script>
 </head>
-<body>
-
-    <div class="container">
-         <!-- <img src="link-to-paymob-logo.png" alt="Paymob" class="paymob-logo"> -->
-        <h1>إتمام الطلب عبر فودافون كاش</h1>
-
-        <!-- رسالة الخطأ (إذا تم إعادة التوجيه مع خطأ) -->
-        <?php
-            // Check for error message in URL query string
-            if (isset($_GET['error']) && !empty($_GET['error'])) {
-                // استخدام htmlspecialchars للامان ضد هجمات XSS
-                echo '<p class="error">' . htmlspecialchars($_GET['error']) . '</p>';
-            }
-        ?>
-
-        <!-- الفورم يرسل البيانات إلى ملف PHP -->
-        <form action="process_payment.php" method="POST" id="payment-form">
-
-            <div>
-                <label for="amount">المبلغ المطلوب (بالجنيه المصري):</label>
-                <input type="number" id="amount" name="amount" required placeholder="أدخل المبلغ المطلوب دفعه" step="0.01" min="1">
-            </div>
-
-            <div>
-                <label for="phone">رقم فودافون كاش الخاص بك:</label>
-                <input type="text" id="phone" name="vodafone_cash_number" required placeholder="مثال: 01012345678" pattern="^01[0125][0-9]{8}$" title="ادخل رقم فودافون كاش صحيح (11 رقم يبدأ بـ 010 أو 012 أو 015)">
-            </div>
-
-             <!-- يمكنك إضافة بيانات مخفية هنا تمررها للباك اند إذا احتجت -->
-             <!-- <input type="hidden" name="customer_id" value="12345"> -->
-             <!-- <input type="hidden" name="order_ref" value="ORD-XYZ-987"> -->
-
-
-            <button type="submit" id="submit-button">التوجه إلى صفحة الدفع</button>
-        </form>
-
-    </div>
-
-     <script>
-         // اختياري: لمنع المستخدم من الضغط على الزر عدة مرات
-         const form = document.getElementById('payment-form');
-         const submitButton = document.getElementById('submit-button');
-
-         form.addEventListener('submit', () => {
-             // تعطيل الزر وتغيير النص بمجرد الضغط
-             submitButton.disabled = true;
-             submitButton.textContent = '... جارٍ التجهيز للدفع';
-         });
-     </script>
-
+<body class="preload">
+<div class="page-container">
+<header class="main-header">
+<div class="logo-container"><img src="https://f.top4top.io/p_3385vnlye0.png" alt="Ahmed Store Logo" class="store-logo"></div>
+<h1>متجر الخدمات الرقمية</h1>
+<p>اطلب خدماتك بسهولة وسرعة فائقة</p>
+</header>
+<main class="form-wrapper card-style">
+<form id="order-form" class="order-form-panel" novalidate>
+<h2 class="form-title"><i class="fas fa-edit"></i> إنشاء طلب جديد</h2>
+<div id="form-status-message" class="status-message" role="alert" aria-live="polite"></div>
+<fieldset class="form-step animate-on-load">
+<legend class="step-legend"><span class="step-number">1</span> اختر المنصة</legend>
+<div class="form-group">
+<label for="category-select" class="sr-only">المنصة <span class="required-indicator">*</span></label>
+<div class="input-wrapper with-icon">
+<span class="input-icon"><i class="fas fa-tags fa-fw"></i></span>
+<select id="category-select" required aria-describedby="category-error">
+<option value="" disabled selected>-- حدد المنصة --</option>
+</select>
+</div>
+<div class="error-message" id="category-error" role="alert" aria-live="assertive"></div>
+</div>
+</fieldset>
+<fieldset class="form-step animate-on-load">
+<legend class="step-legend"><span class="step-number">2</span> حدد الخدمة</legend>
+<div class="form-group search-group">
+<label for="search-input" class="sr-only">ابحث عن خدمة...</label>
+<div class="input-wrapper with-icon">
+<span class="input-icon"><i class="fas fa-search fa-fw"></i></span>
+<input type="search" id="search-input" placeholder="ابحث بالاسم أو الرقم..." disabled aria-describedby="search-status" aria-controls="service-select">
+<span id="search-spinner" class="search-spinner" style="display: none;"></span>
+</div>
+<div class="status-message search-status" id="search-status" role="status" aria-live="polite"></div>
+</div>
+<div class="form-group">
+<label for="service-select" class="sr-only">الخدمة المطلوبة <span class="required-indicator">*</span></label>
+<div class="input-wrapper with-icon">
+<span class="input-icon"><i class="fas fa-cogs fa-fw"></i></span>
+<select id="service-select" required disabled aria-describedby="service-error service-description-area">
+<option value="" disabled selected>-- اختر المنصة أولاً --</option>
+</select>
+</div>
+<div class="error-message" id="service-error" role="alert" aria-live="assertive"></div>
+</div>
+<div id="service-description-area" class="service-description-area card-style subtle" aria-live="polite">
+<h4 class="description-title"><i class="fas fa-info-circle"></i> وصف الخدمة</h4>
+<p id="service-description-text"></p>
+</div>
+</fieldset>
+<fieldset class="form-step animate-on-load" id="service-details-step" style="visibility: hidden; opacity: 0;">
+<legend class="step-legend"><span class="step-number">3</span> أدخل التفاصيل</legend>
+<div class="form-group">
+<label for="link-input">الرابط المطلوب <span class="required-indicator">*</span></label>
+<div class="input-wrapper with-icon">
+<span class="input-icon"><i class="fas fa-link fa-fw"></i></span>
+<input type="url" id="link-input" placeholder="https://..." required aria-describedby="link-error link-hint">
+</div>
+<small id="link-hint" class="input-hint">مثل رابط الحساب أو المنشور.</small>
+<div class="error-message" id="link-error" role="alert" aria-live="assertive"></div>
+</div>
+<div class="form-group">
+<label for="quantity-input">الكمية <span class="required-indicator">*</span></label>
+<div class="input-wrapper with-icon">
+<span class="input-icon"><i class="fas fa-hashtag fa-fw"></i></span>
+<input type="number" id="quantity-input" placeholder="1000" required min="1" step="1" aria-describedby="quantity-error quantity-limits">
+</div>
+<small id="quantity-limits" class="input-hint">الحد الأدنى: - | الحد الأقصى: -</small>
+<div class="error-message" id="quantity-error" role="alert" aria-live="assertive"></div>
+</div>
+<div class="details-summary-card card-style subtle">
+<div class="detail-item">
+<div class="detail-label"><i class="far fa-clock fa-fw"></i> متوسط الوقت</div>
+<div class="detail-value" id="avg-time-display">-</div>
+</div>
+<div class="detail-item charge-item">
+<div class="detail-label"><i class="fas fa-dollar-sign fa-fw"></i> التكلفة</div>
+<div class="detail-value charge-display-value" id="charge-display">٠٫٠٠ ج.م.‏</div>
+</div>
+</div>
+</fieldset>
+<div class="form-group submit-group animate-on-load">
+<button type="submit" id="submit-order-button" class="button button-primary button-lg button-block with-ripple" title="الانتقال إلى تأكيد الدفع" disabled>
+<span class="button-text">المتابعة للدفع والتأكيد <i class="fas fa-arrow-left"></i></span>
+<span class="spinner"></span>
+</button>
+</div>
+</form>
+</main>
+<div class="floating-buttons">
+<a href="https://wa.me/+201554751270" target="_blank" class="fab whatsapp-fab" aria-label="واتساب" title="تواصل واتساب"><i class="fab fa-whatsapp"></i></a>
+<a href="https://t.me/PG_AH" target="_blank" class="fab telegram-fab" aria-label="تيليجرام" title="قناتنا تيليجرام"><i class="fab fa-telegram"></i></a>
+</div>
+<footer class="main-footer">
+<p>© <span id="current-year"></span> متجر الخدمات الرقمية | تطوير <a href="https://t.me/PG_AH" target="_blank" class="footer-link">Ahmed Store</a></p>
+</footer>
+</div>
+<div id="payment-modal-overlay" class="modal-overlay" aria-hidden="true">
+<div id="payment-modal-content" class="modal-content card-style" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+<div class="modal-header">
+<h2 id="modal-title" class="modal-title"><i class="fas fa-shield-check"></i> تأكيد الدفع</h2>
+<button id="modal-close-button" class="modal-close-button" aria-label="إغلاق" title="إغلاق"><i class="fas fa-times"></i></button>
+</div>
+<div class="modal-body">
+<div id="modal-status-message" class="status-message modal-status" role="alert" aria-live="polite"></div>
+<div class="modal-section order-summary modal-animate" data-animation-delay="0">
+<h3 class="modal-section-title"><i class="fas fa-receipt"></i> تفاصيل الطلب</h3>
+<div class="summary-grid">
+<span><i class="fas fa-concierge-bell fa-fw"></i> الخدمة</span> <span id="modal-service-name">-</span>
+<span><i class="fas fa-hashtag fa-fw"></i> الكمية</span> <span id="modal-quantity">-</span>
+<span><i class="fas fa-link fa-fw"></i> الرابط</span> <code id="modal-link">-</code>
+</div>
+<p class="summary-charge">
+<strong><i class="fas fa-money-bill-wave fa-fw"></i> الإجمالي المطلوب</strong>
+<span id="modal-charge">-</span>
+</p>
+</div>
+<div class="modal-section payment-instructions-modal modal-animate" data-animation-delay="0.1">
+<h3 class="modal-section-title"><i class="fas fa-money-check-alt fa-fw"></i> تعليمات التحويل</h3>
+<p class="instruction-text">قم بتحويل المبلغ (<strong id="modal-charge-instruction">-</strong>) إلى:</p>
+<ul class="payment-methods">
+<li><i class="fab fa-fw fa-vimeo-v icon-vodafone"></i><div class="method-details"><strong>فودافون كاش</strong> <span class="payment-number" title="اضغط للنسخ">01060453016</span></div><button class="button button-copy button-sm with-ripple" aria-label="نسخ رقم فودافون كاش"><i class="far fa-copy"></i></button></li>
+<li><i class="fas fa-fw fa-mobile-alt icon-orange"></i><div class="method-details"><strong>أورنج كاش</strong> <span class="payment-number" title="اضغط للنسخ">01554751270</span></div><button class="button button-copy button-sm with-ripple" aria-label="نسخ رقم أورنج كاش"><i class="far fa-copy"></i></button></li>
+<li><i class="fas fa-fw fa-credit-card icon-instapay"></i><div class="method-details"><strong>انستاباي (InstaPay)</strong> <code class="payment-number" title="اضغط للنسخ">@ahmedstore1</code></div><button class="button button-copy button-sm with-ripple" aria-label="نسخ حساب انستاباي"><i class="far fa-copy"></i></button></li>
+</ul>
+<p class="payment-note info-note"><i class="fas fa-info-circle"></i> يرجى إدخال وسيلة التواصل لتأكيد الدفع.</p>
+</div>
+<div class="modal-section contact-info-modal modal-animate" data-animation-delay="0.2">
+<h3 class="modal-section-title"><i class="fas fa-comments fa-fw"></i> معلومات التواصل <span class="required-indicator">*</span></h3>
+<div class="form-group">
+<label for="modal-contact-info" class="sr-only">وسيلة التواصل (بريد أو واتساب) <span class="required-indicator">*</span></label>
+<div class="input-wrapper with-icon">
+<span class="input-icon"><i class="fas fa-at fa-fw"></i></span>
+<input type="text" id="modal-contact-info" placeholder="بريدك الإلكتروني أو رقم واتساب" required aria-describedby="modal-contact-error modal-contact-hint">
+</div>
+<small id="modal-contact-hint" class="input-hint">ضروري لمتابعة الطلب وتأكيد الدفع.</small>
+<div class="error-message" id="modal-contact-error" role="alert" aria-live="assertive"></div>
+</div>
+</div>
+<div class="modal-section screenshot-upload-modal modal-animate" data-animation-delay="0.3">
+<h3 class="modal-section-title"><i class="fas fa-camera-retro fa-fw"></i> إثبات الدفع</h3>
+<p class="input-hint info-note"><i class="fas fa-paper-plane"></i> لا تقلق، سنتواصل معك لاستلام صورة إثبات التحويل.</p>
+</div>
+</div>
+<div class="modal-footer modal-animate" data-animation-delay="0.4">
+<button type="button" id="confirm-payment-button" class="button button-primary button-lg button-block modal-confirm-button with-ripple" title="إرسال الطلب الآن">
+<span class="button-text">تأكيد وإرسال الطلب <i class="fas fa-check-circle"></i></span>
+<span class="spinner"></span>
+</button>
+</div>
+</div>
+</div>
+<div id="copy-feedback" class="copy-feedback" aria-live="polite">تم النسخ!</div>
+<script src="rsh.js"></script>
 </body>
-</html>
+    </html>
