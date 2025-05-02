@@ -1,0 +1,91 @@
+{
+  "instagram": {
+    "name": "انستجرام",
+    "icon": "fab fa-instagram",
+    "services": {
+      "followers": {
+        "name": "متابعين",
+        "packages": [
+          { "id": "igf1", "name": "متابعين عاديين (بدون ضمان)", "pricePerUnit": 0.05, "minQuantity": 100, "description": "جودة عادية، قد يحدث نقص بسيط. الحد الأدنى: 100", "estimatedTime": "1-12 ساعة" },
+          { "id": "igf2", "name": "متابعين حقيقيين (ضمان 30 يوم)", "pricePerUnit": 0.15, "minQuantity": 50, "description": "جودة عالية، ضمان تعويض النقص لمدة 30 يوم. الحد الأدنى: 50", "estimatedTime": "1-24 ساعة" },
+          { "id": "igf3", "name": "متابعين VIP (ضمان مدى الحياة)", "pricePerUnit": 0.50, "minQuantity": 25, "description": "أعلى جودة، سرعة في التنفيذ، ضمان دائم. الحد الأدنى: 25", "estimatedTime": "0-6 ساعات" }
+        ]
+      },
+      "likes": {
+        "name": "لايكات",
+        "packages": [
+          { "id": "igl1", "name": "لايكات سريعة (بدون ضمان)", "pricePerUnit": 0.02, "minQuantity": 100, "description": "وصول سريع للايكات. الحد الأدنى: 100", "estimatedTime": "0-2 ساعة" },
+          { "id": "igl2", "name": "لايكات بجودة عالية (ضمان 15 يوم)", "pricePerUnit": 0.08, "minQuantity": 50, "description": "لايكات من حسابات ذات مظهر أفضل. الحد الأدنى: 50", "estimatedTime": "0-6 ساعات" }
+        ]
+      },
+       "views": {
+        "name": "مشاهدات (فيديو/ريلز)",
+        "packages": [
+          { "id": "igv1", "name": "مشاهدات قياسية", "pricePerUnit": 0.01, "minQuantity": 1000, "description": "مشاهدات سريعة للفيديوهات والريلز. الحد الأدنى: 1000", "estimatedTime": "0-1 ساعة" }
+        ]
+      }
+    }
+  },
+  "tiktok": {
+    "name": "تيك توك",
+    "icon": "fab fa-tiktok",
+    "services": {
+      "followers": {
+        "name": "متابعين",
+        "packages": [
+          { "id": "tkf1", "name": "متابعين تيك توك (ضمان 10 أيام)", "pricePerUnit": 0.10, "minQuantity": 100, "description": "زيادة متابعين حسابك بسرعة مقبولة. الحد الأدنى: 100", "estimatedTime": "1-24 ساعة" },
+          { "id": "tkf2", "name": "متابعين تيك توك (ضمان 30 يوم)", "pricePerUnit": 0.25, "minQuantity": 50, "description": "جودة أفضل وضمان أطول. الحد الأدنى: 50", "estimatedTime": "6-48 ساعة" }
+        ]
+      },
+      "likes": {
+            "name": "لايكات",
+            "packages": [
+                { "id": "tkl1", "name": "لايكات تيك توك", "pricePerUnit": 0.03, "minQuantity": 100, "description": "زيادة الإعجابات على فيديوهاتك. الحد الأدنى: 100", "estimatedTime": "0-3 ساعات" }
+            ]
+        },
+        "views": {
+            "name": "مشاهدات",
+            "packages": [
+                { "id": "tkv1", "name": "مشاهدات تيك توك", "pricePerUnit": 0.005, "minQuantity": 1000, "description": "زيادة عدد المشاهدات بسرعة. الحد الأدنى: 1000", "estimatedTime": "0-1 ساعة" }
+            ]
+        }
+    }
+  },
+   "facebook": {
+    "name": "فيسبوك",
+    "icon": "fab fa-facebook",
+     "services": {
+        "page_likes": {
+            "name": "إعجابات بالصفحة",
+            "packages": [
+                 { "id": "fbp1", "name": "إعجابات صفحة فيسبوك", "pricePerUnit": 0.18, "minQuantity": 100, "description": "زيادة عدد المعجبين بصفحتك. الحد الأدنى: 100", "estimatedTime": "12-72 ساعة" }
+            ]
+        },
+        "post_likes": {
+             "name": "لايكات للمنشور",
+              "packages": [
+                { "id": "fbl1", "name": "لايكات منشور فيسبوك", "pricePerUnit": 0.06, "minQuantity": 50, "description": "زيادة التفاعل على منشوراتك. الحد الأدنى: 50", "estimatedTime": "1-12 ساعة" }
+            ]
+        }
+    }
+  },
+   "youtube": {
+    "name": "يوتيوب",
+    "icon": "fab fa-youtube",
+    "services": {
+        "subscribers": {
+            "name": "مشتركين",
+            "packages": [
+                 { "id": "yts1", "name": "مشتركين يوتيوب (ضمان 15 يوم)", "pricePerUnit": 0.80, "minQuantity": 20, "description": "زيادة عدد المشتركين في قناتك. الحد الأدنى: 20", "estimatedTime": "24-72 ساعة" }
+            ]
+        },
+        "views": {
+             "name": "مشاهدات",
+              "packages": [
+                { "id": "ytv1", "name": "مشاهدات يوتيوب (عادية)", "pricePerUnit": 0.04, "minQuantity": 1000, "description": "زيادة مشاهدات فيديوهاتك. الحد الأدنى: 1000", "estimatedTime": "6-48 ساعة" },
+                { "id": "ytv2", "name": "مشاهدات يوتيوب (عالية الجودة)", "pricePerUnit": 0.12, "minQuantity": 500, "description": "مشاهدات عالية الجودة. الحد الأدنى: 500", "estimatedTime": "12-72 ساعة" }
+            ]
+        }
+    }
+  }
+}
